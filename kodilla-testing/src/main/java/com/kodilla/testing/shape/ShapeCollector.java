@@ -11,18 +11,10 @@ public class ShapeCollector {
     }
 
     public boolean addFigure(Shape shape){
-        boolean result = false;
-        if(figures.add(shape)) {
-            result = true;
-        };
-        return result;
+        return figures.add(shape);
     }
     public boolean removeFigure(Shape shape){
-        boolean result = false;
-        if(figures.remove(shape)) {
-            result = true;
-        }
-        return result;
+        return figures.remove(shape);
     }
     public Shape getFigure(int n){
         return figures.get(n);
