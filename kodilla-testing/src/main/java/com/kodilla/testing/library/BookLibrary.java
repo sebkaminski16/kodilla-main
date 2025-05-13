@@ -21,9 +21,7 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
-        //dummy data
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book("1", "1", 1900));
+        List<Book> bookList = libraryDatabase.listBooksInHandsOf(libraryUser);
         return bookList;
     }
 }
