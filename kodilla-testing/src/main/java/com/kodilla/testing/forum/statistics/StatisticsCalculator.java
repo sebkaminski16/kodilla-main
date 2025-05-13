@@ -11,7 +11,21 @@ public class StatisticsCalculator {
     private double avgCommentsPerPost;
 
     public void calculateAdvStatistics(Statistics statistics){
-        //...
+        userNames = statistics.usersNames();
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        if(userNames.isEmpty()) {
+            avgPostsPerUser = 0;
+            avgCommentsPerUser = 0;
+        } else {
+            avgPostsPerUser = (double) postsCount / userNames.size();
+            avgCommentsPerUser = (double) commentsCount / userNames.size();
+        }
+        if(postsCount == 0) {
+            avgCommentsPerPost = 0;
+        } else {
+            avgCommentsPerPost = (double) commentsCount / postsCount;
+        }
     }
 
     public List<String> getUserNames() {
@@ -27,15 +41,15 @@ public class StatisticsCalculator {
     }
 
     public double getAvgPostsPerUser() {
-        return 1.0;
+        return avgPostsPerUser;
     }
 
     public double getAvgCommentsPerUser() {
-        return 1.0;
+        return avgCommentsPerUser;
     }
 
     public double getAvgCommentsPerPost() {
-        return 1.0;
+        return avgCommentsPerPost;
     }
 
     public void showStatistics() {
