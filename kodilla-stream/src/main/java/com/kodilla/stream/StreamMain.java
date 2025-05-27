@@ -8,7 +8,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.Year;
 import java.util.Map;
+import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamMain {
 
@@ -21,8 +24,9 @@ public class StreamMain {
                         Period.between(user.getBirthday(), LocalDate.now()).getYears() >= 20
                         && user.getGender().equals(ForumUserGender.M)
                         && user.getPublishedPostsCount() >= 1)
-                .collect(Collectors.toMap(ForumUser::getId, user -> user));
+                .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
         streamedUsers.values().stream().forEach(System.out::println);
+        Stream.generate(() -> new Random().nextInt()).limit(10).forEach(System.out::println);
     }
 }
